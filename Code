@@ -28,4 +28,4 @@ print(df.dtypes)
 # Save cleaned data
 df.to_csv("cleaned_data.csv", index=False)
 
-print("✅ Preprocessing complete. Cleaned data saved to 'cleaned_data.csv")
+print(" Preprocessing complete. Cleaned data saved to 'cleaned_data.csv")
