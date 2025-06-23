@@ -19,7 +19,6 @@ CODE EXPLANATION!
 ---
 
 * Loads the dataset from a specific path on your computer.
-* Uses `ISO-8859-1` encoding to correctly interpret special characters.
 
 ---
 
