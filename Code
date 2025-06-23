@@ -1,0 +1,31 @@
+import pandas as pd
+
+# Load the CSV file
+df = pd.read_csv(r"C:\Users\DQ5029\Default\Downloads\sales_data_sample.csv", encoding='ISO-8859-1')
+
+# Drop duplicate rows
+df = df.drop_duplicates()
+print("Dropped all duplicate value successfully")
+
+# Handle missing values (just checking them here)
+print("Missing values:\n", df.isnull().sum())
+df.dropna(axis=1, how='any', inplace=True)
+print("Deleted Columns with Missing Values Successfully")
+
+# Standardize text (e.g., country names to lowercase)
+if 'COUNTRY' in df.columns:
+    df['COUNTRY'] = df['COUNTRY'].str.lower().str.strip()
+
+# Convert date format
+if 'ORDERDATE' in df.columns:
+    df['ORDERDATE'] = pd.to_datetime(df['ORDERDATE'], errors='coerce')
+
+# Rename columns: lowercase, no spaces
+df.columns = df.columns.str.lower().str.replace(" ", "_")
+
+#Checking and changing datatype
+print(df.dtypes)
+# Save cleaned data
+df.to_csv("cleaned_data.csv", index=False)
+
+print("✅ Preprocessing complete. Cleaned data saved to 'cleaned_data.csv")
